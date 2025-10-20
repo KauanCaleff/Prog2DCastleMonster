@@ -8,15 +8,15 @@ public class MainMenu : MonoBehaviour
 {
     
     public void PlayGame(){
-        SceneManager.LoadScene("MovementTest");
+        SceneManager.LoadScene("Fase1");
     }
 
     public void Credits(){
-        SceneManager.LoadScene("Credito");
+        SceneManager.LoadScene("Creditos");
     }
 
     public void ReturnMainMenu(){
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MenuInicial");
     }
 
     public void QuitGame(){
