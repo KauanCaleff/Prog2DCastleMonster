@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MenuInicial");
     }
 
+    public void Narrativa(){
+        SceneManager.LoadScene("Narrativa");
+    }
+
+
     public void QuitGame(){
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();

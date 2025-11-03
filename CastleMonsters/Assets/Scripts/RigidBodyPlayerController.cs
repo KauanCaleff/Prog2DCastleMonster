@@ -18,7 +18,7 @@ public class RigidBodyPlayerController : MonoBehaviour
     public float jumpForce;
     private bool isGrounded;
     
-    //private Animator playeranim;
+    private Animator playeranim;
     private SpriteRenderer spriteRenderer; 
 
     public Text cointxt;
@@ -28,7 +28,7 @@ public class RigidBodyPlayerController : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        // playeranim = GetComponent<Animator>();
+        playeranim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -51,7 +51,7 @@ public class RigidBodyPlayerController : MonoBehaviour
             Jump();
         }
         jump = false;
-        //Animations();
+        Animations();
     }
 
     void Move()
@@ -90,12 +90,12 @@ public class RigidBodyPlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
-    //private void Animations()
-    //{
-    //    playeranim.SetFloat("speedx", Mathf.Abs(rigidBody.velocity.x));
-    //    playeranim.SetFloat("speedy", rigidBody.velocity.y);
-    //    playeranim.SetBool("onGround", isGrounded );
-    //}
+    private void Animations()
+    {
+        playeranim.SetFloat("speedx", Mathf.Abs(rigidBody.velocity.x));
+        playeranim.SetFloat("speedy", rigidBody.velocity.y);
+        playeranim.SetBool("onGround", isGrounded );
+    }
 
     public void AumentarVida(int quantidade)
     {
