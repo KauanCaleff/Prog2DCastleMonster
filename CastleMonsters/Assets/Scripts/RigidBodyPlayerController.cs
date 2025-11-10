@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class RigidBodyPlayerController : MonoBehaviour
 {
-    
+    //componentes
+    private Animator playeranim;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
+    
+    
     private float horizontalInput;
 
     public float speed;
@@ -16,10 +20,9 @@ public class RigidBodyPlayerController : MonoBehaviour
     public int coin;
 
     public float jumpForce;
-    private bool isGrounded;
+    private bool isGrounded = false;
     
-    private Animator playeranim;
-    private SpriteRenderer spriteRenderer; 
+
 
     public Text cointxt;
     public Text startxt;
@@ -75,26 +78,19 @@ public class RigidBodyPlayerController : MonoBehaviour
         rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
-    }
     private void Animations()
     {
         playeranim.SetFloat("speedx", Mathf.Abs(rigidBody.velocity.x));
         playeranim.SetFloat("speedy", rigidBody.velocity.y);
-        playeranim.SetBool("onGround", isGrounded );
+        playeranim.SetBool("onGround", isGrounded);
     }
 
     public void AumentarVida(int quantidade)
