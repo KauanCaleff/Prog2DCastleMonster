@@ -11,8 +11,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Fase1");
     }
 
-    public void Credits(){
-        SceneManager.LoadScene("Creditos");
+    public void Jogabilidade(){
+        SceneManager.LoadScene("Jogabilidade");
     }
 
     public void ReturnMainMenu(){

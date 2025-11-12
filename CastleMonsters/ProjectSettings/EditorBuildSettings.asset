@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Narrativa.unity
     guid: 60f4ae2b68f075443ab90dfecd168154
+  - enabled: 1
+    path: Assets/Scenes/Jogabilidade.unity
+    guid: e96fa08b07ed99e4c8fc9e173de23e70
   m_configObjects: {}

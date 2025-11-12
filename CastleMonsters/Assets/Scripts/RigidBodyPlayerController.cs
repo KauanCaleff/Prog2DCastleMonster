@@ -6,28 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class RigidBodyPlayerController : MonoBehaviour
 {
-    //componentes
+    // Componentes
     private Animator playeranim;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
-    
-    
+
     private float horizontalInput;
-
-    public float speed;
     private bool jump;
-    public int vida = 3; 
+    public float speed;
+    public int vida = 3;
     public int coin;
-
     public float jumpForce;
     private bool isGrounded = false;
-    
 
+    // Double Jump
+    private bool canDoubleJump = false;
+
+    // Dash
+    public float dashForce = 15f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+    private bool isDashing = false;
+    private bool canDash = true;
 
     public Text cointxt;
     public Text startxt;
 
-    // Start is called before the first frame update
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -35,25 +39,47 @@ public class RigidBodyPlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isDashing) return;
+
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump")){
-            jump = true;
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded)
+            {
+                jump = true;
+                canDoubleJump = true; 
+            }
+            else if (canDoubleJump)
+            {
+                jump = true;
+                canDoubleJump = false;
+            }
         }
+
+        // Dash (Shift esquerdo)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
         Death();
     }
 
     void FixedUpdate()
     {
+        if (isDashing) return; // não move horizontalmente durante o dash
+
         Move();
-        if (isGrounded && jump)
+
+        if (jump)
         {
             Jump();
+            jump = false;
         }
-        jump = false;
+
         Animations();
     }
 
@@ -61,26 +87,44 @@ public class RigidBodyPlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(horizontalInput * speed, rigidBody.velocity.y);
 
-     
         if (horizontalInput > 0)
         {
-            spriteRenderer.flipX = false; 
+            spriteRenderer.flipX = false;
         }
         else if (horizontalInput < 0)
         {
             spriteRenderer.flipX = true;
         }
-        
     }
 
     void Jump()
     {
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); // reseta velocidade vertical
         rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        isGrounded = false;
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        float originalGravity = rigidBody.gravityScale;
+        rigidBody.gravityScale = 0; // remove a gravidade
+        rigidBody.velocity = new Vector2((spriteRenderer.flipX ? -1 : 1) * dashForce, 0);
+
+        yield return new WaitForSeconds(dashDuration);
+
+        rigidBody.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -98,12 +142,11 @@ public class RigidBodyPlayerController : MonoBehaviour
         if (vida < 3 && vida > 0)
         {
             vida += quantidade;
-
-            if (vida > 3)
-                vida = 3;
+            if (vida > 3) vida = 3;
         }
         startxt.text = vida.ToString();
     }
+
     public void DiminuirVida(int quantidade)
     {
         vida -= quantidade;
@@ -116,10 +159,11 @@ public class RigidBodyPlayerController : MonoBehaviour
         cointxt.text = coin.ToString();
     }
 
-    public void Death(){
-        if (vida <= 0){
+    public void Death()
+    {
+        if (vida <= 0)
+        {
             SceneManager.LoadScene("Dead Screen 1");
         }
-        
     }
 }
