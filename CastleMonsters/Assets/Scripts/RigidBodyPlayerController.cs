@@ -59,7 +59,7 @@ public class RigidBodyPlayerController : MonoBehaviour
             }
         }
 
-        // Dash (Shift esquerdo)
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
@@ -70,7 +70,7 @@ public class RigidBodyPlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDashing) return; // não move horizontalmente durante o dash
+        if (isDashing) return;
 
         Move();
 
@@ -99,7 +99,7 @@ public class RigidBodyPlayerController : MonoBehaviour
 
     void Jump()
     {
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); // reseta velocidade vertical
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); 
         rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
     }
@@ -110,7 +110,7 @@ public class RigidBodyPlayerController : MonoBehaviour
         isDashing = true;
 
         float originalGravity = rigidBody.gravityScale;
-        rigidBody.gravityScale = 0; // remove a gravidade
+        rigidBody.gravityScale = 0; 
         rigidBody.velocity = new Vector2((spriteRenderer.flipX ? -1 : 1) * dashForce, 0);
 
         yield return new WaitForSeconds(dashDuration);
