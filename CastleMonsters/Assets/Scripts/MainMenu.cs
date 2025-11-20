@@ -6,34 +6,51 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject narrativa;
-    public GameObject jogabilidade;
-
-    void Start() {
-
-    }
-
+    public AudioSource audioSource;
+    public AudioClip clickSound;
     
-    public void PlayGame(){
-        SceneManager.LoadScene("Fase1");
+    private IEnumerator ChangeScene(string sceneName)
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+            yield return new WaitForSeconds(clickSound.length); 
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void Jogabilidade(){
-        jogabilidade.SetActive(true);
-    }
-    public void Narrativa(){
-        narrativa.SetActive(true);
+    public void PlayGame()
+    {
+        StartCoroutine(ChangeScene("Fase1"));
     }
 
-    public void ReturnMainMenu(){
-        SceneManager.LoadScene("MenuInicial");
+    public void Jogabilidade()
+    {
+        StartCoroutine(ChangeScene("Jogabilidade"));
     }
 
+    public void Narrativa()
+    {
+        StartCoroutine(ChangeScene("Narrativa")); 
+    }
 
-
+    public void ReturnMainMenu()
+    {
+        StartCoroutine(ChangeScene("MenuInicial"));
+    }
 
     public void QuitGame(){
+        PlayClickSound();
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
+    }
+
+    private void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

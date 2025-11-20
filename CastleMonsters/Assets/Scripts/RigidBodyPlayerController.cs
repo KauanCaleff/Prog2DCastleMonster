@@ -151,6 +151,7 @@ public class RigidBodyPlayerController : MonoBehaviour
     {
         vida -= quantidade;
         startxt.text = vida.ToString();
+        print("Perdeu vida");
     }
 
     public void Coin(int quantity)
@@ -163,7 +164,7 @@ public class RigidBodyPlayerController : MonoBehaviour
     {
         if (vida <= 0)
         {
-            SceneManager.LoadScene("Dead Screen 1");
+            SceneManager.LoadScene("DeadScreen");
         }
     }
 }
