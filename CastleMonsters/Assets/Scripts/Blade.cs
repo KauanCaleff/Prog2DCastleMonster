@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
+    RigidBodyPlayerController player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GetComponent<RigidBodyPlayerController>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,6 @@ public class Blade : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            RigidBodyPlayerController player = collision.gameObject.GetComponent<RigidBodyPlayerController>();
             player.DiminuirVida(1);
             
         }
