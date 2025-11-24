@@ -6,9 +6,6 @@ public class PlayerAudio : MonoBehaviour
 {
     public AudioSource audioSource;
 
-    public AudioClip[] footstepClips;
-    public bool canFootstep = true;
-
     public AudioClip jumpClip;
 
 
@@ -18,15 +15,6 @@ public class PlayerAudio : MonoBehaviour
 
     public AudioClip coinClip;
 
-
-    public void Footstep()
-    {
-        if (!canFootstep) return;
-        if (footstepClips.Length == 0) return;
-
-        AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
-        audioSource.PlayOneShot(clip);
-    }
 
     public void PlayJump()
     {
