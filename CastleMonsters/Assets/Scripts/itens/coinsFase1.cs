@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coins1 : MonoBehaviour
+public class coinsFase1 : MonoBehaviour
 {
     public GameObject som;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Coins1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            RigidBodyPlayerController player = collision.gameObject.GetComponent<RigidBodyPlayerController>();
+            RigidBodyPlayerController_fase1 player = collision.gameObject.GetComponent<RigidBodyPlayerController_fase1>();
             player.Coin(1);
             Destroy(gameObject);
             Instantiate(som);

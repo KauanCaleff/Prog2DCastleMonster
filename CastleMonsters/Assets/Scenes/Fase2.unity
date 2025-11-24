@@ -3590,8 +3590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -5050,8 +5048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -5155,8 +5151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -9629,8 +9623,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -10197,8 +10189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -12082,8 +12072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -152959,8 +152947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 8300000, guid: f42ffebbbb762e1468bdf66c00bd552d, type: 3}
   damageClip: {fileID: 8300000, guid: a249d713e85a65442bbe011ad46b8f5c, type: 3}
   dashClip: {fileID: 8300000, guid: 4bed90d6fda539a4bbf1757851ff5395, type: 3}
@@ -153398,8 +153384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}
@@ -153531,11 +153515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538961969805077497, guid: 29def8f3f4be4184ea93dea22235105c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.37
+      value: 99.07
       objectReference: {fileID: 0}
     - target: {fileID: 3538961969805077497, guid: 29def8f3f4be4184ea93dea22235105c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7
+      value: 2.02
       objectReference: {fileID: 0}
     - target: {fileID: 3538961969805077497, guid: 29def8f3f4be4184ea93dea22235105c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -153809,8 +153793,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 519420034}
-  footstepClips: []
-  canFootstep: 1
   jumpClip: {fileID: 0}
   damageClip: {fileID: 0}
   dashClip: {fileID: 0}

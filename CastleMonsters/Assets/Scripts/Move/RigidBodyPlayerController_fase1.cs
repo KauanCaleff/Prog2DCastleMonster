@@ -41,7 +41,7 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         allowedDash = false;
-        allowedDJ = true;
+        allowedDJ = false;
     }
 
     void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class melon : MonoBehaviour
 {
+    public GameObject som;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,12 @@ public class melon : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
+    private void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.CompareTag("Player")) {
             RigidBodyPlayerController_fase1 player = col.gameObject.GetComponent<RigidBodyPlayerController_fase1>();
             player.allowedDash = true;
             Destroy(gameObject);
+            Instantiate(som);
         }
     }
 }
