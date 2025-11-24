@@ -20,9 +20,11 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
     private bool isGrounded = false;
 
     // Double Jump
+    [HideInInspector] public bool allowedDJ = false;
     private bool canDoubleJump = false;
 
     // Dash
+    [HideInInspector] public bool allowedDash = false;
     public float dashForce = 15f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
@@ -50,7 +52,9 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
             if (isGrounded)
             {
                 jump = true;
-                canDoubleJump = true; 
+                if (allowedDJ) {
+                    canDoubleJump = true; 
+                }
             }
             else if (canDoubleJump)
             {
