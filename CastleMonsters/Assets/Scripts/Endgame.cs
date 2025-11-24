@@ -27,6 +27,6 @@ public class Endgame : MonoBehaviour
     }
 
     public void WinScreen(){
-        SceneManager.LoadScene("Win Screen");
+        SceneManager.LoadScene("WinScreen");
     }
 }

@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    public GameObject leftPositionObject, rightPositionObject;
-    private float rightPosition, leftPosition;
-    public float speed;
-    // Start is called before the first frame update
-    private void Start()
+    public Transform topPoint;     // ponto mais alto
+    public Transform bottomPoint;  // ponto mais baixo
+
+    public float speed = 2f;
+
+    private float topY, bottomY;
+    private int direction = 1; // 1 = sobe, -1 = desce
+
+    void Start()
     {
-        leftPosition = leftPositionObject.transform.position.x;
-        rightPosition = rightPositionObject.transform.position.x;
+        bottomY = bottomPoint.position.y;
+        topY = topPoint.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        // move somente no eixo Y
+        transform.Translate(Vector2.up * speed * direction * Time.deltaTime);
 
-        if(transform.position.x < leftPosition)
+        // Se chegou no topo, desce
+        if (transform.position.y >= topY)
         {
-            transform.position = new Vector2(leftPosition, transform.position.y);
-            speed *= -1;
+            transform.position = new Vector2(transform.position.x, topY);
+            direction = -1;
         }
 
-        if(transform.position.x > rightPosition)
+        // Se chegou no fundo, sobe
+        if (transform.position.y <= bottomY)
         {
-            transform.position = new Vector2(rightPosition, transform.position.y);
-            speed *= -1;
+            transform.position = new Vector2(transform.position.x, bottomY);
+            direction = 1;
         }
     }
 }

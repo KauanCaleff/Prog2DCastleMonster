@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public GameObject som;
+    public AudioClip som;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,6 @@ public class Coins : MonoBehaviour
             RigidBodyPlayerController player = collision.gameObject.GetComponent<RigidBodyPlayerController>();
             player.Coin(1);
             Destroy(gameObject);
-            Instantiate(som, transform.position, Quaternion.identity);
 
         }
     }

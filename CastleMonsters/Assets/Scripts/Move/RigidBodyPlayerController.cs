@@ -10,6 +10,8 @@ public class RigidBodyPlayerController : MonoBehaviour
     private Animator playeranim;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
+    private PlayerAudio audioPlayer;
+
 
     private float horizontalInput;
     private bool jump;
@@ -30,13 +32,15 @@ public class RigidBodyPlayerController : MonoBehaviour
     private bool canDash = true;
 
     public Text cointxt;
-    public Text startxt;
+    public Text vidatxt;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         playeranim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioPlayer = GetComponent<PlayerAudio>();
+
     }
 
     void Update()
@@ -101,7 +105,9 @@ public class RigidBodyPlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); 
         rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        audioPlayer.PlayJump();
         isGrounded = false;
+        
     }
 
     private IEnumerator Dash()
@@ -112,6 +118,8 @@ public class RigidBodyPlayerController : MonoBehaviour
         float originalGravity = rigidBody.gravityScale;
         rigidBody.gravityScale = 0; 
         rigidBody.velocity = new Vector2((spriteRenderer.flipX ? -1 : 1) * dashForce, 0);
+        audioPlayer.PlayDash();
+
 
         yield return new WaitForSeconds(dashDuration);
 
@@ -144,20 +152,22 @@ public class RigidBodyPlayerController : MonoBehaviour
             vida += quantidade;
             if (vida > 3) vida = 3;
         }
-        startxt.text = vida.ToString();
+        vidatxt.text = vida.ToString();
     }
 
     public void DiminuirVida(int quantidade)
     {
         vida -= quantidade;
-        startxt.text = vida.ToString();
-        print("Perdeu vida");
+        vidatxt.text = vida.ToString();
+        audioPlayer.PlayDamage();
+
     }
 
     public void Coin(int quantity)
     {
         coin += quantity;
         cointxt.text = coin.ToString();
+        audioPlayer.PlayCoin();
     }
 
     public void Death()

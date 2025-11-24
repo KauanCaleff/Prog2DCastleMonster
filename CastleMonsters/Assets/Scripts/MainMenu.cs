@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         if (audioSource != null && clickSound != null)
         {
             audioSource.PlayOneShot(clickSound);
-            yield return new WaitForSeconds(clickSound.length); 
+            yield return new WaitForSeconds(1); 
         }
 
         SceneManager.LoadScene(sceneName);
