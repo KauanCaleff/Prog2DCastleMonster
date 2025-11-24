@@ -34,6 +34,10 @@ public class RigidBodyPlayerController : MonoBehaviour
     public Text cointxt;
     public Text vidatxt;
 
+    public GameObject keyUI; 
+    public bool hasKey = false;
+
+
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -177,4 +181,14 @@ public class RigidBodyPlayerController : MonoBehaviour
             SceneManager.LoadScene("DeadScreen");
         }
     }
+
+    public void ColetarChave()
+    {
+        hasKey = true;
+
+        if (keyUI != null){
+            keyUI.SetActive(true);
+        }
+    }
+    
 }
