@@ -20,11 +20,11 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
     private bool isGrounded = false;
 
     // Double Jump
-    [HideInInspector] public bool allowedDJ = false;
+    [HideInInspector] public bool allowedDJ;
     private bool canDoubleJump = false;
 
     // Dash
-    [HideInInspector] public bool allowedDash = false;
+    [HideInInspector] public bool allowedDash;
     public float dashForce = 15f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
@@ -39,6 +39,9 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         playeranim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        allowedDash = false;
+        allowedDJ = false;
     }
 
     void Update()
@@ -64,7 +67,7 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && allowedDash)
         {
             StartCoroutine(Dash());
         }
