@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +7,17 @@ using UnityEngine;
 public class Coins1 : MonoBehaviour
 {
     public AudioClip som;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
-            RigidBodyPlayerController_fase1 player = collision.gameObject.GetComponent<RigidBodyPlayerController_fase1>();
-            player.Coin(1);
-            Destroy(gameObject);
+            RigidBodyPlayerController_fase1 player = col.GetComponent<RigidBodyPlayerController_fase1>();
 
+            if (player != null)
+                player.Coin(1); 
+
+            Destroy(gameObject); 
         }
     }
-    
-
 }
