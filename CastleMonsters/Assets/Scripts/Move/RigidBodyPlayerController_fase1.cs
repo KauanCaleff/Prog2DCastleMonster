@@ -22,6 +22,8 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
     // Double Jump
     [HideInInspector] public bool allowedDJ;
     private bool canDoubleJump = false;
+    public GameObject somPulo;
+    public GameObject Dashsound;
 
     // Dash
     [HideInInspector] public bool allowedDash;
@@ -54,6 +56,7 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
         {
             if (isGrounded)
             {
+                Instantiate(somPulo);
                 jump = true;
                 if (allowedDJ) {
                     canDoubleJump = true; 
@@ -61,6 +64,7 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
             }
             else if (canDoubleJump)
             {
+                Instantiate(somPulo);
                 jump = true;
                 canDoubleJump = false;
             }
@@ -69,6 +73,7 @@ public class RigidBodyPlayerController_fase1 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && allowedDash)
         {
+            Instantiate(Dashsound);
             StartCoroutine(Dash());
         }
 

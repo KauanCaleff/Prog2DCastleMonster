@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2555757663461822032}
   - component: {fileID: 2555757663461822033}
-  - component: {fileID: 2555757663461822038}
   - component: {fileID: 2555757663461822039}
   m_Layer: 0
   m_Name: Espinhos
@@ -86,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2555757663461822038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2555757663461822036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b68e0814d10cd046bc7e2e0ded5ef45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2555757663461822039
 BoxCollider2D:
   m_ObjectHideFlags: 0

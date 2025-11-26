@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Blade1 : MonoBehaviour
 {
+    public GameObject som;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -13,6 +14,7 @@ public class Blade1 : MonoBehaviour
             if (player != null)
             {
                 player.DiminuirVida(1);
+                Instantiate(som);
             }
         }
     }
